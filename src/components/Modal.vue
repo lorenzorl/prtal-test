@@ -77,6 +77,7 @@ export default {
       this.$store.dispatch("close");
     },
     saveData() {
+      if (this.status === 'paid' && this.date == null) return
       this.$store.dispatch('editPaymentDate', {
         date: this.date,
         id: this.payment.id
@@ -87,6 +88,7 @@ export default {
       });
       this.$store.dispatch('updateAllPayments')
       this.$store.dispatch('calculateTotal')
+      this.$store.dispatch('calculatePercents')
       this.close()
     },
     removePayment() {

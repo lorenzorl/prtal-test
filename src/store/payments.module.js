@@ -38,7 +38,7 @@ export default {
     },
     setMaxValues(state) {
       state.payments.forEach((payment, i) => {
-        const nearestPayment = state.payments[getNearestPaymentIndex(i)]
+        const nearestPayment = state.payments[getNearestPaymentIndex(state.payments, i)]
         payment.max = payment.amount + nearestPayment.amount
       });
     },
@@ -114,8 +114,8 @@ export default {
       const { id, difference } = payload
       
       const currentPaymentIndex = getPaymentIndexById(state.payments, id)
-
-      const nearestPaymentIndex = getNearestPaymentIndex(currentPaymentIndex)
+      
+      const nearestPaymentIndex = getNearestPaymentIndex(state.payments, currentPaymentIndex)
 
       const nearestPayment = {...state.payments[nearestPaymentIndex]}
       const currentPayment = {...state.payments[currentPaymentIndex]}
@@ -189,7 +189,20 @@ export default {
       let totalPaid = 0
       installmentsPaid.forEach(payment => totalPaid += payment.amount)
 
-      commit('setTotal', (state.startingTotal - totalPaid))
+      commit('setTotal', round(state.startingTotal - totalPaid))
+    },
+    calculatePercents({ commit, state }) {
+      const pendingPayments = state.payments.filter(payment => payment.status === 'pending');
+      const total = state.total
+
+      pendingPayments.forEach(payment => {
+        const newPercent = round(payment.amount * 100 / total)
+        commit('setPaymentField', {
+          id: payment.id,
+          field: 'percent',
+          value: newPercent
+        })
+      })
     }
   }
 }

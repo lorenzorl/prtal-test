@@ -29,8 +29,8 @@
 
 <script>
 import AddPaymentButton from './AddPaymentButton.vue';
-import PaymentForm from './Payment/PaymentForm.vue';
-import PaymentView from './Payment/PaymentView.vue';
+import PaymentForm from './PaymentForm.vue';
+import PaymentView from './PaymentView.vue';
 
 export default {
   name: "PaymentItem",
@@ -74,6 +74,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/base/variables";
+@import "@/assets/scss/base/mixins";
 .payment {
 
   display: flex;

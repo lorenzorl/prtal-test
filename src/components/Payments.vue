@@ -1,7 +1,10 @@
 <template>
   <div class="payments">
     <header class="payments__header">
-      <h2 class="payments__title">Pagos</h2>
+      <h2 class="payments__title">
+        Pagos
+        <font-awesome-icon class="icon" icon="fas fa-chevron-down" size="xs" />
+      </h2>
       <ul class="payments__options">
         <li class="payments__option edit" v-if="isView" @click="changeMode(MODES.editing)">
           <span>Editar</span>
@@ -35,7 +38,7 @@
 
 <script>
 
-import Payment from './Payment.vue';
+import Payment from './Payment/Payment.vue';
 
 const MODES = {
   editing: 'editing',
@@ -115,6 +118,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/base/variables";
+@import "@/assets/scss/base/mixins";
 .payments {
   background-color: #ffffff;
   border-radius: 8px;
@@ -132,6 +137,20 @@ export default {
   &__title {
     flex-grow: 1;
     margin: 0;
+    color: #3460DC;
+
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    
+    @include tabletDown {
+      font-size: 20px;
+    }
+
+    & > .icon {
+      margin-left: 10px;
+    }
   }
 
   &__options {
@@ -142,6 +161,7 @@ export default {
 
   &__option {
     cursor: pointer;
+    margin-left: 10px;
 
     &.edit {
       font-weight: 600;
@@ -170,6 +190,10 @@ export default {
     letter-spacing: -0.02em;
     color: #94A3B8;
 
+    @include tabletDown {
+      font-size: 16px;
+    }
+
     &>b {
       font-weight: 600;
       color: #0F172A;
@@ -189,6 +213,16 @@ export default {
   &__item {
     width: 25%;
     flex-shrink: 0;
+
+    @include tabletDown {
+      width: 33%;
+    }
+    @include mobileDown {
+      width: 50%;
+    }
+    @include mobileSmDown {
+      width: 100%;
+    }
   }
 }
 </style>

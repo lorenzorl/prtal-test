@@ -115,6 +115,9 @@ export default {
 
 <style lang="scss" scoped>
 .payment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   input[type="text"],
   &__amount {
