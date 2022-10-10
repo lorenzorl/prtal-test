@@ -1,0 +1,90 @@
+/*
+ * Breakpoints
+ */
+
+//  DesktopXl
+@mixin desktopXlUp {
+  @media screen and (min-width: $desktopXl) {
+      @content;
+  }
+}
+@mixin desktopXlDown {
+  @media screen and (max-width: ($desktopXl - 0.5px)) {
+      @content;
+  }
+}
+
+//  DesktopLg
+@mixin desktopLgUp {
+  @media screen and (min-width: $desktopLg) {
+      @content;
+  }
+}
+@mixin desktopLgDown {
+  @media screen and (max-width: ($desktopLg - 0.5px)) {
+      @content;
+  }
+}
+
+//  desktop
+@mixin desktopUp {
+  @media screen and (min-width: $desktopMd) {
+      @content;
+  }
+}
+@mixin desktopDown {
+  @media screen and (max-width: ($desktopMd - 0.5px)) {
+      @content;
+  }
+}
+
+//  desktopMd
+@mixin desktopMdUp {
+  @media screen and (min-width: $desktopMd) {
+      @content;
+  }
+}
+@mixin desktopMdDown {
+  @media screen and (max-width: ($desktopMd - 0.5px)) {
+      @content;
+  }
+}
+
+//  tablet
+@mixin tabletUp {
+  @media screen and (min-width: $tablet) {
+      @content;
+  }
+}
+@mixin tabletDown {
+  @media screen and (max-width: ($tablet - 0.5px)) {
+      @content;
+  }
+}
+
+//  mobile
+@mixin mobileUp {
+  @media screen and (min-width: $mobile) {
+      @content;
+  }
+}
+@mixin mobileDown {
+  @media screen and (max-width: ($mobile - 0.5px)) {
+      @content;
+  }
+}
+
+@mixin mobileSmUp {
+  @media screen and (min-width: $mobileSm) {
+      @content;
+  }
+}
+@mixin mobileSmDown {
+  @media screen and (max-width: ($mobileSm - 0.5px)) {
+      @content;
+  }
+}
+
+/*
+* End Breakpoints
+*/

@@ -1,28 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <Payments :startingTotal="total" :currency="currency" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <MaskView v-if="modalIsOpen" />
+    <Modal v-if="modalIsOpen" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Payments from './components/Payments.vue';
+import MaskView from './components/MaskView.vue';
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Payments,
+    MaskView,
+    Modal
+  },
+  computed: {
+    modalIsOpen() {
+      return this.$store.state.modal.isOpen
+    }
+  },
+  data() {
+
+    const TOTAL = 182;
+    const CURRENCY = 'UF';
+
+    return {
+      total: TOTAL,
+      currency: CURRENCY
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

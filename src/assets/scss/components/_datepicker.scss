@@ -1,0 +1,6 @@
+$namespace: 'mx'; // change the 'mx' to 'xmx'. then <date-picker prefix-class="xmx" />
+
+$default-color: #555;
+$primary-color: #1D4ED8;
+
+@import '~vue2-datepicker/scss/index.scss';
